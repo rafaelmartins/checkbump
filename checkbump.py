@@ -8,7 +8,6 @@ from jinja2 import Template
 from logging import getLogger, Formatter, StreamHandler, INFO
 from subprocess import Popen, PIPE
 from time import strftime
-from urllib import urlencode
 from urllib2 import urlopen, URLError
 
 from portage import portagetree
@@ -35,7 +34,7 @@ HTML_TEMPLATE = Template('''\
             <tr>
                 <th>Package</th>
                 <th>Bugs</th>
-                <th>Our version</th>
+                <th>Gentoo version</th>
                 <th>Upstream version</th>
                 <th>Up-to-date?</th>
             </tr>
@@ -155,6 +154,7 @@ def main(argv):
     pkg_list = PackageList(argv[0])
     config_file = os.path.splitext(os.path.basename(argv[0]))[0]
     sys.stdout.write(generate_html(config_file, pkg_list))
+    return 0
 
 
 if __name__ == '__main__':
