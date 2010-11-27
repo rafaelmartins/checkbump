@@ -9,7 +9,7 @@
     :license: BSD (http://www.opensource.org/licenses/bsd-license.php)
 """
 
-from fabric.api import cd, env, local, put, run
+from fabric.api import env, local, put, run
 from glob import glob
 
 env.user = 'rafaelmartins'
