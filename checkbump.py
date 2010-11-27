@@ -11,6 +11,11 @@
     :license: BSD (http://www.opensource.org/licenses/bsd-license.php)
 """
 
+import os, sys
+
+# force "~*" keywords
+os.environ['ACCEPT_KEYWORDS'] = '~*'
+
 from ConfigParser import ConfigParser
 from contextlib import closing
 from datetime import datetime
@@ -21,9 +26,6 @@ from portage.versions import pkgsplit, vercmp
 from subprocess import Popen, PIPE
 from time import strftime
 from urllib2 import urlopen, URLError
-
-import os, sys
-
 
 # logging formatters
 LOG_FORMATTER = "[%(asctime)s] %(name)s.%(levelname)s: %(message)s"
