@@ -16,6 +16,9 @@ import os, sys
 # force "~*" keywords
 os.environ['ACCEPT_KEYWORDS'] = '~*'
 
+# ignore overlays
+os.environ['PORTDIR_OVERLAY'] = ''
+
 from ConfigParser import ConfigParser
 from contextlib import closing
 from datetime import datetime
