@@ -62,7 +62,7 @@ HTML_TEMPLATE = Template("""\
             </tr>
             {%- else %}
             <tr>
-                <td colspan="4">No packages available!</td>
+                <td colspan="5">No packages available!</td>
             </tr>
             {%- endfor %}
         </table>
