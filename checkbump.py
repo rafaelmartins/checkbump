@@ -1,25 +1,35 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+    checkbump.py
+    ~~~~~~~~~~~~
+    
+    Version bump checker for Gentoo Linux packages.
+    Depends on Jinja2.
+    
+    :copyright: (c) 2010 by Rafael Goncalves Martins
+    :license: BSD (http://www.opensource.org/licenses/bsd-license.php)
+"""
 
 from ConfigParser import ConfigParser
 from contextlib import closing
 from datetime import datetime
 from jinja2 import Template
 from logging import getLogger, Formatter, StreamHandler, INFO
+from portage import portagetree
+from portage.versions import pkgsplit, vercmp
 from subprocess import Popen, PIPE
 from time import strftime
 from urllib2 import urlopen, URLError
 
-from portage import portagetree
-from portage.versions import pkgsplit, vercmp
-
 import os, sys
+
 
 # logging formatters
 LOG_FORMATTER = "[%(asctime)s] %(name)s.%(levelname)s: %(message)s"
 LOG_DATEFORMAT = "%Y-%m-%d %H:%M:%S %Z"
 
-HTML_TEMPLATE = Template('''\
+HTML_TEMPLATE = Template("""\
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -60,7 +70,7 @@ HTML_TEMPLATE = Template('''\
         <p>Last update: {{ last_update }}</p>
     </body>
 </html>
-''')
+""")
 
 # setup logging
 logger = getLogger('checkbump')
